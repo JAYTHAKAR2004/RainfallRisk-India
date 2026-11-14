@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-ivory: #F7F4EE;
+  --bg-parchment: #FCFBF8;
+  --bg-atlas: #EFECE4;
+  --ink-primary: #141E28;
+  --ink-secondary: #3E4C59;
+  --ink-muted: #667480;
+  --border-hairline: #D8D3C8;
+  --accent-rain: #1D5B86;
+  --accent-monsoon: #1E7A6E;
+  --accent-extreme: #C85A28;
+  --accent-ochre: #B8862D;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-ivory);
+    color: var(--ink-primary);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: 'Newsreader', Georgia, serif;
+    letter-spacing: -0.015em;
+  }
+
+  code, pre, .font-mono, .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.bg-atlas-grid {
+  background-color: var(--bg-ivory);
+  background-image:
+    linear-gradient(to right, rgba(20, 30, 40, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 30, 40, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-cartographic-tint {
+  background-color: #EFECE4;
+  background-image:
+    radial-gradient(rgba(29, 91, 134, 0.07) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.editorial-rule-top {
+  border-top: 2px solid #141E28;
+}
+
+.editorial-hairline {
+  border-color: #D8D3C8;
+}
+
+/* Clean custom scrollbars for data tables and panels */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #EFECE4;
+}
+::-webkit-scrollbar-thumb {
+  background: #B8B2A4;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8B8578;
+}
+

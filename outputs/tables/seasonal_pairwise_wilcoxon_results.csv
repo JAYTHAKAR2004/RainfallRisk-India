@@ -1,0 +1,7 @@
+Season_1,Season_2,Statistic,Raw_P_Value,Adjusted_P_Value,Significant
+Winter,Pre-Monsoon,0.0,2.9802322387695312e-08,1.7881393432617188e-07,True
+Winter,Southwest Monsoon,0.0,2.9802322387695312e-08,1.7881393432617188e-07,True
+Winter,Post-Monsoon,0.0,2.9802322387695312e-08,1.7881393432617188e-07,True
+Pre-Monsoon,Southwest Monsoon,0.0,2.9802322387695312e-08,1.7881393432617188e-07,True
+Pre-Monsoon,Post-Monsoon,73.0,0.0079384446144104,0.0079384446144104,True
+Southwest Monsoon,Post-Monsoon,0.0,2.9802322387695312e-08,1.7881393432617188e-07,True

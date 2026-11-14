@@ -1,0 +1,29 @@
+# Local Conda / Python caches & environments
+.conda_envs/
+.conda_pkgs/
+.conda_temp/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Node dependencies & production build output
+node_modules/
+dist/
+
+# Local Python/Node temp cache & downloaded parquet artifacts
+rainfallrisk-web/
+
+# Unrelated local scratch directory
+NakshiSorry/
+
+# Large binary NetCDF archives (24-75 MB each; see README for data provenance)
+*.nc
+
+# OS / editor / logs
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+.vscode/
+.idea/
+

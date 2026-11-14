@@ -1,0 +1,15 @@
+Metric,Value
+Observations,9497.0
+Mean_mm,3.147274837466275
+Median_mm,1.6325250980827275
+Standard_Deviation_mm,3.54051538857162
+Minimum_mm,0.0
+Maximum_mm,19.272047920276602
+Q1_mm,0.3929791386861851
+Q3_mm,5.211574080848389
+IQR_mm,4.818594942162204
+Skewness,1.2699500683187503
+Kurtosis,0.817561422061832
+Zero_Rainfall_Days,106.0
+Positive_Rainfall_Days,9391.0
+Positive_Rainfall_Percent,98.88385806044015

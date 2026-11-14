@@ -1,0 +1,5 @@
+Normal_Class,Observations,Mean_Normal,Mean_Actual,Mean_Reported_Departure,Median_Reported_Departure,Maximum_Reported_Departure
+Low normal (0.1-0.5),228,0.3328947368421053,0.7236842105263158,121.50877192982456,-100.0,6825.0
+Normal above 0.5,2612,6.1096094946401225,4.7603369065849925,-13.280245022970904,-75.0,6036.0
+Very low normal (<=0.1),100,0.1,0.299,199.79,-100.0,11125.0
+Zero normal,120,0.0,0.6791666666666667,2453.8333333333335,-100.0,82735.0

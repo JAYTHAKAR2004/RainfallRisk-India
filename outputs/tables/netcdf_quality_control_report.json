@@ -1,0 +1,20 @@
+{
+    "project": "RainfallRisk India",
+    "dataset": "IMD Daily Gridded Rainfall",
+    "period": "2000-01-01 to 2025-12-31",
+    "total_days": 9497,
+    "grid_cells_in_common_footprint": 4885,
+    "valid_observations": 46392845,
+    "missing_observations_inside_footprint": 0,
+    "valid_observations_outside_footprint": 0,
+    "source_comparisons": 240,
+    "maximum_source_difference_mm": 0.0,
+    "checks": {
+        "Continuous daily dates": true,
+        "Spatial dimensions correct": true,
+        "No missing data inside common footprint": true,
+        "Excluded region contains no rainfall data": true,
+        "Original and combined values match": true
+    },
+    "overall_status": "PASS"
+}
