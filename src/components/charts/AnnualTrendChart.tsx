@@ -101,23 +101,23 @@ export function AnnualTrendChart({
         <ResponsiveContainer width="100%" height="100%">
           {mode === 'total' ? (
             <ComposedChart data={chartData} margin={{ top: 16, right: 20, left: 6, bottom: 8 }}>
-              <CartesianGrid stroke="#E4DFD4" strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid stroke="#1C3245" strokeDasharray="3 3" vertical={false} />
               <XAxis
                 dataKey="Year"
-                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
                 tickLine={false}
-                axisLine={{ stroke: '#D8D3C8' }}
+                axisLine={{ stroke: '#2A4053' }}
               />
               <YAxis
                 domain={[800, 1400]}
-                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
                 tickLine={false}
-                axisLine={{ stroke: '#D8D3C8' }}
+                axisLine={{ stroke: '#2A4053' }}
                 label={{
                   value: 'Annual Rainfall (mm)',
                   angle: -90,
                   position: 'insideLeft',
-                  style: { fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#667480' },
+                  style: { fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#7F96A5' },
                 }}
               />
               <Tooltip
@@ -157,22 +157,22 @@ export function AnnualTrendChart({
               />
               <ReferenceLine
                 y={longTermMean}
-                stroke="#141E28"
+                stroke="#DCE8EF"
                 strokeDasharray="4 4"
                 label={{
                   value: `26-yr Mean: ${fmtNum(longTermMean, 1)} mm`,
                   position: 'insideTopLeft',
-                  fill: '#141E28',
+                  fill: '#DCE8EF',
                   fontSize: 10,
                   fontFamily: 'JetBrains Mono',
                 }}
               />
               <Bar dataKey="Annual_Rainfall_mm" maxBarSize={24} isAnimationActive={false}>
                 {chartData.map((entry) => {
-                  let fill = '#6A94B3';
-                  if (entry.Year === 2020) fill = '#1E7A6E';
-                  else if (entry.Year === 2002) fill = '#C85A28';
-                  else if (entry.Annual_Rainfall_mm >= longTermMean) fill = '#1D5B86';
+                  let fill = '#3E6A86';
+                  if (entry.Year === 2020) fill = '#5C9B9B';
+                  else if (entry.Year === 2002) fill = '#D9895A';
+                  else if (entry.Annual_Rainfall_mm >= longTermMean) fill = '#8FB6CD';
                   return <Cell key={entry.Year} fill={fill} />;
                 })}
               </Bar>
@@ -180,7 +180,7 @@ export function AnnualTrendChart({
                 <Line
                   type="linear"
                   dataKey="olsFit"
-                  stroke="#C85A28"
+                  stroke="#D9895A"
                   strokeWidth={2}
                   dot={false}
                   isAnimationActive={false}
@@ -190,7 +190,7 @@ export function AnnualTrendChart({
                 <Line
                   type="linear"
                   dataKey="senFit"
-                  stroke="#1E7A6E"
+                  stroke="#5C9B9B"
                   strokeWidth={2}
                   strokeDasharray="6 4"
                   dot={false}
@@ -200,29 +200,29 @@ export function AnnualTrendChart({
             </ComposedChart>
           ) : (
             <ComposedChart data={chartData} margin={{ top: 16, right: 20, left: 6, bottom: 8 }}>
-              <CartesianGrid stroke="#E4DFD4" strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid stroke="#1C3245" strokeDasharray="3 3" vertical={false} />
               <XAxis
                 dataKey="Year"
-                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
                 tickLine={false}
               />
               <YAxis
                 domain={[-22, 16]}
-                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
                 tickLine={false}
                 label={{
                   value: 'Departure (%)',
                   angle: -90,
                   position: 'insideLeft',
-                  style: { fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#667480' },
+                  style: { fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#7F96A5' },
                 }}
               />
-              <ReferenceLine y={0} stroke="#141E28" />
+              <ReferenceLine y={0} stroke="#DCE8EF" />
               <Tooltip
                 formatter={(val: number) => [`${fmtSigned(val, 2)}%`, 'Departure from Mean']}
                 contentStyle={{
-                  backgroundColor: '#FCFBF8',
-                  borderColor: '#141E28',
+                  backgroundColor: '#0C1E2E',
+                  borderColor: '#DCE8EF',
                   fontFamily: 'JetBrains Mono',
                   fontSize: '12px',
                 }}
@@ -231,7 +231,7 @@ export function AnnualTrendChart({
                 {chartData.map((entry) => (
                   <Cell
                     key={entry.Year}
-                    fill={entry.Deviation_Percentage >= 0 ? '#1D5B86' : '#C85A28'}
+                    fill={entry.Deviation_Percentage >= 0 ? '#8FB6CD' : '#D9895A'}
                   />
                 ))}
               </Bar>

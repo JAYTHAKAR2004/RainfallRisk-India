@@ -26,10 +26,10 @@ interface SeasonalDistributionChartProps {
 }
 
 const SEASON_COLORS: Record<string, string> = {
-  Winter: '#6A94B3',
-  'Pre-Monsoon': '#B8862D',
-  'Southwest Monsoon': '#1D5B86',
-  'Post-Monsoon': '#1E7A6E',
+  Winter: '#3E6A86',
+  'Pre-Monsoon': '#C9A35A',
+  'Southwest Monsoon': '#8FB6CD',
+  'Post-Monsoon': '#5C9B9B',
 };
 
 export function SeasonalDistributionChart({
@@ -84,18 +84,18 @@ export function SeasonalDistributionChart({
         <ResponsiveContainer width="100%" height="100%">
           {tab === 'share' ? (
             <BarChart data={summary} layout="vertical" margin={{ top: 10, right: 32, left: 32, bottom: 10 }}>
-              <CartesianGrid stroke="#E4DFD4" strokeDasharray="3 3" horizontal={false} />
+              <CartesianGrid stroke="#1C3245" strokeDasharray="3 3" horizontal={false} />
               <XAxis
                 type="number"
                 domain={[0, 85]}
-                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
                 unit="%"
               />
               <YAxis
                 type="category"
                 dataKey="Season"
                 width={140}
-                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#141E28' }}
+                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#DCE8EF' }}
               />
               <Tooltip
                 content={({ active, payload }) => {
@@ -115,70 +115,70 @@ export function SeasonalDistributionChart({
               />
               <Bar dataKey="Contribution_Percent" maxBarSize={32} isAnimationActive={false}>
                 {summary.map((s) => (
-                  <Cell key={s.Season} fill={SEASON_COLORS[s.Season] || '#1D5B86'} />
+                  <Cell key={s.Season} fill={SEASON_COLORS[s.Season] || '#8FB6CD'} />
                 ))}
               </Bar>
             </BarChart>
           ) : tab === 'intensity' ? (
             <BarChart data={intensitySummary} margin={{ top: 12, right: 20, left: 10, bottom: 8 }}>
-              <CartesianGrid stroke="#E4DFD4" strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid stroke="#1C3245" strokeDasharray="3 3" vertical={false} />
               <XAxis
                 dataKey="Season"
-                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#141E28' }}
+                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#DCE8EF' }}
               />
               <YAxis
-                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
                 label={{
                   value: 'Mean Daily Intensity (mm/day)',
                   angle: -90,
                   position: 'insideLeft',
-                  style: { fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#667480' },
+                  style: { fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#7F96A5' },
                 }}
               />
               <Tooltip
                 formatter={(val: number) => [`${fmtNum(val, 3)} mm/day`, 'Mean Daily Intensity']}
                 contentStyle={{
-                  backgroundColor: '#FCFBF8',
-                  borderColor: '#141E28',
+                  backgroundColor: '#0C1E2E',
+                  borderColor: '#DCE8EF',
                   fontFamily: 'JetBrains Mono',
                   fontSize: '12px',
                 }}
               />
               <Bar dataKey="mean" maxBarSize={48} isAnimationActive={false}>
                 {intensitySummary.map((s) => (
-                  <Cell key={s.Season} fill={SEASON_COLORS[s.Season] || '#1D5B86'} />
+                  <Cell key={s.Season} fill={SEASON_COLORS[s.Season] || '#8FB6CD'} />
                 ))}
               </Bar>
             </BarChart>
           ) : (
             <LineChart data={yearlyIntensity} margin={{ top: 12, right: 20, left: 10, bottom: 8 }}>
-              <CartesianGrid stroke="#E4DFD4" strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid stroke="#1C3245" strokeDasharray="3 3" vertical={false} />
               <XAxis
                 dataKey="Year"
-                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
               />
               <YAxis
-                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
                 label={{
                   value: 'Seasonal Intensity (mm/day)',
                   angle: -90,
                   position: 'insideLeft',
-                  style: { fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#667480' },
+                  style: { fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#7F96A5' },
                 }}
               />
               <Tooltip
                 formatter={(val: number, name: string) => [`${fmtNum(val, 3)} mm/day`, name]}
                 contentStyle={{
-                  backgroundColor: '#FCFBF8',
-                  borderColor: '#141E28',
+                  backgroundColor: '#0C1E2E',
+                  borderColor: '#DCE8EF',
                   fontFamily: 'JetBrains Mono',
                   fontSize: '11px',
                 }}
               />
-              <Line type="monotone" dataKey="Southwest Monsoon" stroke="#1D5B86" strokeWidth={2} dot={{ r: 2 }} isAnimationActive={false} />
-              <Line type="monotone" dataKey="Pre-Monsoon" stroke="#B8862D" strokeWidth={1.8} dot={{ r: 2 }} isAnimationActive={false} />
-              <Line type="monotone" dataKey="Post-Monsoon" stroke="#1E7A6E" strokeWidth={1.8} dot={{ r: 2 }} isAnimationActive={false} />
-              <Line type="monotone" dataKey="Winter" stroke="#6A94B3" strokeWidth={1.8} dot={{ r: 2 }} isAnimationActive={false} />
+              <Line type="monotone" dataKey="Southwest Monsoon" stroke="#8FB6CD" strokeWidth={2} dot={{ r: 2 }} isAnimationActive={false} />
+              <Line type="monotone" dataKey="Pre-Monsoon" stroke="#C9A35A" strokeWidth={1.8} dot={{ r: 2 }} isAnimationActive={false} />
+              <Line type="monotone" dataKey="Post-Monsoon" stroke="#5C9B9B" strokeWidth={1.8} dot={{ r: 2 }} isAnimationActive={false} />
+              <Line type="monotone" dataKey="Winter" stroke="#3E6A86" strokeWidth={1.8} dot={{ r: 2 }} isAnimationActive={false} />
             </LineChart>
           )}
         </ResponsiveContainer>

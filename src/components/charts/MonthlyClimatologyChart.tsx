@@ -23,9 +23,9 @@ function cellColor(mm: number): string {
   if (mm < 15) return '#F2EFE8';
   if (mm < 40) return '#DCE8F0';
   if (mm < 90) return '#AECBE0';
-  if (mm < 160) return '#6FA3C7';
+  if (mm < 160) return '#3E6A86';
   if (mm < 230) return '#2F79A8';
-  if (mm < 300) return '#1D5B86';
+  if (mm < 300) return '#8FB6CD';
   return '#113A58';
 }
 
@@ -91,20 +91,20 @@ export function MonthlyClimatologyChart({
         <div className="h-[340px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={climatology} margin={{ top: 14, right: 20, left: 6, bottom: 8 }}>
-              <CartesianGrid stroke="#E4DFD4" strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid stroke="#1C3245" strokeDasharray="3 3" vertical={false} />
               <XAxis
                 dataKey="Month_Name"
-                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
                 tickLine={false}
               />
               <YAxis
-                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
                 tickLine={false}
                 label={{
                   value: 'Monthly Rainfall (mm)',
                   angle: -90,
                   position: 'insideLeft',
-                  style: { fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#667480' },
+                  style: { fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#7F96A5' },
                 }}
               />
               <Tooltip
@@ -134,14 +134,14 @@ export function MonthlyClimatologyChart({
                   );
                 }}
               />
-              <Bar dataKey="mean" name="Mean (mm)" fill="#1D5B86" maxBarSize={32} isAnimationActive={false} />
+              <Bar dataKey="mean" name="Mean (mm)" fill="#8FB6CD" maxBarSize={32} isAnimationActive={false} />
               <Line
                 type="monotone"
                 dataKey="median"
                 name="Median (mm)"
-                stroke="#C85A28"
+                stroke="#D9895A"
                 strokeWidth={2}
-                dot={{ r: 3, fill: '#C85A28' }}
+                dot={{ r: 3, fill: '#D9895A' }}
                 isAnimationActive={false}
               />
             </ComposedChart>

@@ -2,26 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ------------------------------------------------------------------
+   THE LIVING MONSOON SKY — global atmosphere
+   ------------------------------------------------------------------ */
 :root {
-  --bg-ivory: #F7F4EE;
-  --bg-parchment: #FCFBF8;
-  --bg-atlas: #EFECE4;
-  --ink-primary: #141E28;
-  --ink-secondary: #3E4C59;
-  --ink-muted: #667480;
-  --border-hairline: #D8D3C8;
-  --accent-rain: #1D5B86;
-  --accent-monsoon: #1E7A6E;
-  --accent-extreme: #C85A28;
-  --accent-ochre: #B8862D;
+  --sky-storm: #071522;
+  --sky-atmos: #10283B;
+  --sky-thunder: #344653;
+  --sky-rain: #729CB5;
+  --sky-mist: #DCE8EF;
+  --sky-lightning: #D9E8F3;
+  --sky-teal: #5C9B9B;
+  --sky-ember: #D9895A;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: var(--bg-ivory);
-    color: var(--ink-primary);
+    background-color: var(--sky-storm);
+    color: var(--sky-mist);
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color-scheme: dark;
+  }
+
+  body {
+    background:
+      radial-gradient(120% 60% at 50% -10%, rgba(52, 70, 83, 0.35), transparent 60%),
+      linear-gradient(180deg, #071522 0%, #081927 40%, #071522 100%);
+    background-attachment: fixed;
   }
 
   h1, h2, h3, .font-editorial {
@@ -32,43 +40,118 @@
   code, pre, .font-mono, .tabular-nums {
     font-variant-numeric: tabular-nums;
   }
+
+  ::selection {
+    background: rgba(114, 156, 181, 0.35);
+    color: #F2F7FA;
+  }
 }
 
+/* Faint meteorological plotting grid, like a radar overlay */
 .bg-atlas-grid {
-  background-color: var(--bg-ivory);
+  background-color: var(--sky-storm);
   background-image:
-    linear-gradient(to right, rgba(20, 30, 40, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(20, 30, 40, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgba(114, 156, 181, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(114, 156, 181, 0.05) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
 .bg-cartographic-tint {
-  background-color: #EFECE4;
-  background-image:
-    radial-gradient(rgba(29, 91, 134, 0.07) 1px, transparent 1px);
+  background-color: #0C1E2E;
+  background-image: radial-gradient(rgba(114, 156, 181, 0.08) 1px, transparent 1px);
   background-size: 16px 16px;
 }
 
 .editorial-rule-top {
-  border-top: 2px solid #141E28;
+  border-top: 2px solid var(--sky-mist);
 }
 
 .editorial-hairline {
-  border-color: #D8D3C8;
+  border-color: #22384A;
 }
 
-/* Clean custom scrollbars for data tables and panels */
+/* ------------------------------------------------------------------
+   Sky motion primitives
+   ------------------------------------------------------------------ */
+@keyframes cloud-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.cloud-drift {
+  animation-name: cloud-drift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+@keyframes sky-light-wander {
+  0% { transform: translate3d(-12%, 0, 0) scale(1); opacity: 0.55; }
+  50% { transform: translate3d(10%, -3%, 0) scale(1.08); opacity: 0.9; }
+  100% { transform: translate3d(-12%, 0, 0) scale(1); opacity: 0.55; }
+}
+.sky-light-wander {
+  animation: sky-light-wander 48s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes cue-drop {
+  0% { transform: translateY(-110%); opacity: 0; }
+  25% { opacity: 1; }
+  100% { transform: translateY(230%); opacity: 0; }
+}
+.cue-drop {
+  animation: cue-drop 2.4s cubic-bezier(0.55, 0, 0.75, 0.4) infinite;
+}
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translate3d(0, 18px, 0); filter: blur(6px); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); filter: blur(0); }
+}
+.hero-rise {
+  opacity: 0;
+  animation: hero-rise 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes nav-cloud-float {
+  0%, 100% { transform: translate3d(0, -2px, 0); }
+  50% { transform: translate3d(0, -4.5px, 0); }
+}
+.nav-cloud-btn {
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), color 260ms ease, filter 320ms ease;
+  will-change: transform;
+}
+.nav-cloud-btn:hover {
+  animation: nav-cloud-float 4.2s ease-in-out infinite;
+}
+.nav-cloud-btn:focus-visible {
+  outline: none;
+  filter: drop-shadow(0 0 8px rgba(217, 232, 243, 0.62));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud-drift,
+  .sky-light-wander,
+  .cue-drop,
+  .nav-cloud-btn:hover {
+    animation: none !important;
+  }
+  .hero-rise {
+    opacity: 1;
+    animation: none !important;
+  }
+}
+
+/* Clean custom scrollbars tuned to the storm palette */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #EFECE4;
+  background: #071522;
 }
 ::-webkit-scrollbar-thumb {
-  background: #B8B2A4;
+  background: #2A4256;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #8B8578;
+  background: #3E5C73;
 }
-

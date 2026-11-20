@@ -1,4 +1,4 @@
-import { ArrowRight, Compass, Database, FileSpreadsheet, Map } from 'lucide-react';
+import { ArrowRight, Compass, FileSpreadsheet } from 'lucide-react';
 import type {
   FootprintCellsBundle,
   GeoFeatureCollection,
@@ -6,7 +6,8 @@ import type {
   PageRoute,
   RegionalDataBundle,
 } from '../../data/types';
-import { fmtInt, fmtNum } from '../../utils/formatters';
+import { fmtInt } from '../../utils/formatters';
+import { MonsoonSkyHero } from '../../components/sky/MonsoonSkyHero';
 import { StatCallout } from '../../components/research/StatCallout';
 import { InteractiveIndiaMap } from '../../components/maps/InteractiveIndiaMap';
 
@@ -27,141 +28,21 @@ export function HomePage({
   districtsGeo,
   onNavigate,
 }: HomePageProps) {
-  const maxAnnual = Math.max(...historical.annual_statistics.map((r) => r.Annual_Rainfall_mm));
-  const minAnnual = Math.min(...historical.annual_statistics.map((r) => r.Annual_Rainfall_mm));
 
   return (
     <div>
-      {/* Editorial Hero Section */}
-      <section className="bg-atlas-grid border-b border-ink">
-        <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-start">
-            {/* Left Editorial Column */}
-            <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-3 border border-ink bg-parchment px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-ink">
-                <span>RainfallRisk India</span>
-                <span className="text-mutedink">·</span>
-                <span className="text-rainblue">Research Edition</span>
-              </div>
+      <MonsoonSkyHero annual={historical.annual_statistics} onNavigate={onNavigate} />
 
-              <h1 className="mt-6 font-editorial text-4xl font-semibold leading-[1.08] text-ink sm:text-5xl lg:text-[3.5rem]">
-                Reading India&apos;s Rainfall.{' '}
-                <span className="italic text-rainblue">Beyond the Numbers.</span>
-              </h1>
-
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-slateink sm:text-lg">
-                An exploratory statistical investigation of historical rainfall variability, extreme precipitation, seasonal characteristics, and regional rainfall differences across India.
-              </p>
-
-              {/* Prominent Dual Study Periods */}
-              <div className="mt-7 grid grid-cols-1 gap-4 border-y border-ink bg-parchment/85 p-4 sm:grid-cols-2">
-                <div className="border-l-2 border-rainblue pl-3.5">
-                  <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-rainblue">
-                    Study Horizon 01 · Historical Gridded
-                  </div>
-                  <div className="mt-1 font-editorial text-2xl font-semibold text-ink">
-                    2000 – 2025
-                  </div>
-                  <div className="mt-0.5 font-mono text-[11px] text-slateink">
-                    26 yearly IMD NetCDF files · 9,497 continuous days · 4,885 common-footprint cells
-                  </div>
-                </div>
-
-                <div className="border-l-2 border-extreme pl-3.5">
-                  <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-extreme">
-                    Study Horizon 02 · Recent Regional
-                  </div>
-                  <div className="mt-1 font-editorial text-2xl font-semibold text-ink">
-                    19 Aug – 12 Nov 2026
-                  </div>
-                  <div className="mt-0.5 font-mono text-[11px] text-slateink">
-                    36 States/UTs (3,060 obs) · 727 balanced districts (61,795 obs) · missing 31 Oct
-                  </div>
-                </div>
-              </div>
-
-              {/* Action CTAs */}
-              <div className="mt-7 flex flex-wrap items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => onNavigate('historical')}
-                  className="inline-flex items-center gap-2 border border-ink bg-ink px-5 py-3 font-mono text-xs font-medium uppercase tracking-wider text-ivory transition hover:bg-rainblue"
-                >
-                  <span>Explore the Research</span>
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('atlas')}
-                  className="inline-flex items-center gap-2 border border-ink bg-parchment px-4 py-3 font-mono text-xs font-medium uppercase tracking-wider text-ink transition hover:bg-atlas"
-                >
-                  <Map className="h-4 w-4 text-rainblue" />
-                  <span>Interactive India Atlas</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('explorer')}
-                  className="inline-flex items-center gap-2 border border-hairline bg-parchment px-4 py-3 font-mono text-xs font-medium uppercase tracking-wider text-slateink transition hover:border-ink hover:text-ink"
-                >
-                  <Database className="h-4 w-4" />
-                  <span>Data Explorer</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Right Visual Composition: Actual Annual Map Animation + Hyetograph Barcode */}
-            <div className="lg:col-span-5">
-              <div className="border border-ink bg-parchment shadow-sm">
-                <div className="flex items-center justify-between border-b border-hairline bg-ivory px-4 py-2.5 font-mono text-[10px] uppercase tracking-widest text-slateink">
-                  <span>FIG. 0.1 · 2000–2025 ANNUAL SPATIAL SERIES</span>
-                  <span className="text-rainblue">0.25° × 0.25° IMD</span>
-                </div>
-                <div className="bg-white p-3">
-                  <img
-                    src="/Annual_Rainfall_Maps/India_Annual_Rainfall_Animation_2000_2025.gif"
-                    alt="Animated annual rainfall maps across India 2000–2025"
-                    className="mx-auto max-h-[300px] w-auto object-contain"
-                  />
-                </div>
-                {/* 26-Year Hyetograph Strip built from exact annual statistics */}
-                <div className="border-t border-hairline bg-ivory/75 p-4">
-                  <div className="flex items-baseline justify-between font-mono text-[10px] uppercase tracking-wider text-mutedink">
-                    <span>Footprint Mean Annual Rainfall (2000–2025)</span>
-                    <span className="text-ink">Mean: 1,149.60 mm/yr</span>
-                  </div>
-                  <div className="mt-2.5 flex h-16 items-end gap-[3px]" role="img" aria-label="2000 to 2025 annual rainfall sparkline">
-                    {historical.annual_statistics.map((row) => {
-                      const pct = ((row.Annual_Rainfall_mm - minAnnual * 0.85) / (maxAnnual - minAnnual * 0.85)) * 100;
-                      let color = '#6FA3C7';
-                      if (row.Year === 2020) color = '#1E7A6E';
-                      else if (row.Year === 2002) color = '#C85A28';
-                      else if (row.Annual_Rainfall_mm >= 1149.603) color = '#1D5B86';
-                      return (
-                        <div
-                          key={row.Year}
-                          title={`${row.Year}: ${fmtNum(row.Annual_Rainfall_mm, 1)} mm`}
-                          className="flex-1 transition-opacity hover:opacity-75"
-                          style={{
-                            height: `${Math.max(18, pct)}%`,
-                            backgroundColor: color,
-                          }}
-                        />
-                      );
-                    })}
-                  </div>
-                  <div className="mt-1.5 flex justify-between font-mono text-[10px] text-mutedink">
-                    <span>2000</span>
-                    <span className="text-extreme">2002 (947.1 mm min)</span>
-                    <span className="text-monsoon">2020 (1,285.9 mm max)</span>
-                    <span>2025</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+      {/* Beneath the cloud base: four measured signals */}
+      <section className="relative border-b border-hairline bg-gradient-to-b from-[#0B1C2B] to-ivory">
+        <div className="mx-auto max-w-[1400px] px-4 py-16 sm:px-6 lg:px-10">
+          <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-hairline pb-4">
+            <span className="font-mono text-[11px] uppercase tracking-[0.26em] text-rainblue">
+              Beneath the cloud base · Four measured signals
+            </span>
+            <span className="font-mono text-[11px] text-mutedink">Sources: project.ipynb · outputs_project2/</span>
           </div>
-
-          {/* Core Headline Evidence Strip */}
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             <StatCallout
               label="26-Year Footprint Mean"
               value="1,149.60"

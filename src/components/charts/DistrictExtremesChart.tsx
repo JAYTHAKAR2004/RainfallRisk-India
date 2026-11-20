@@ -92,18 +92,18 @@ export function DistrictExtremesChart({
         <ResponsiveContainer width="100%" height="100%">
           {view === 'scatter' ? (
             <ScatterChart margin={{ top: 14, right: 24, left: 6, bottom: 16 }}>
-              <CartesianGrid stroke="#E4DFD4" strokeDasharray="3 3" />
+              <CartesianGrid stroke="#1C3245" strokeDasharray="3 3" />
               <XAxis
                 type="number"
                 dataKey="mean"
                 name="Mean Rainfall"
                 unit=" mm"
-                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
                 label={{
                   value: 'District Mean Actual Rainfall (mm/day)',
                   position: 'insideBottom',
                   offset: -8,
-                  style: { fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#667480' },
+                  style: { fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#7F96A5' },
                 }}
               />
               <YAxis
@@ -111,12 +111,12 @@ export function DistrictExtremesChart({
                 dataKey="std"
                 name="Std Dev"
                 unit=" mm"
-                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
                 label={{
                   value: 'Daily Std Deviation (mm/day)',
                   angle: -90,
                   position: 'insideLeft',
-                  style: { fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#667480' },
+                  style: { fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#7F96A5' },
                 }}
               />
               <ZAxis type="number" dataKey="max" range={[18, 120]} />
@@ -141,55 +141,55 @@ export function DistrictExtremesChart({
               <Scatter
                 name="Balanced Districts (727)"
                 data={scatterData}
-                fill="#1D5B86"
+                fill="#8FB6CD"
                 fillOpacity={0.55}
                 isAnimationActive={false}
               />
             </ScatterChart>
           ) : view === 'daily' ? (
             <ComposedChart data={dailyTemporal} margin={{ top: 14, right: 20, left: 6, bottom: 8 }}>
-              <CartesianGrid stroke="#E4DFD4" strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid stroke="#1C3245" strokeDasharray="3 3" vertical={false} />
               <XAxis
                 dataKey="Date"
                 minTickGap={24}
-                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
               />
               <YAxis
                 yAxisId="left"
-                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#1D5B86' }}
+                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#8FB6CD' }}
                 label={{
                   value: '727-District Mean (mm/day)',
                   angle: -90,
                   position: 'insideLeft',
-                  style: { fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#1D5B86' },
+                  style: { fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#8FB6CD' },
                 }}
               />
               <YAxis
                 yAxisId="right"
                 orientation="right"
-                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#C85A28' }}
+                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#D9895A' }}
                 label={{
                   value: 'Daily District Max (mm)',
                   angle: 90,
                   position: 'insideRight',
-                  style: { fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#C85A28' },
+                  style: { fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#D9895A' },
                 }}
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#FCFBF8',
-                  borderColor: '#141E28',
+                  backgroundColor: '#0C1E2E',
+                  borderColor: '#DCE8EF',
                   fontFamily: 'JetBrains Mono',
                   fontSize: '11px',
                 }}
               />
-              <Bar yAxisId="left" dataKey="Mean_Rainfall" name="Mean Actual (mm/day)" fill="#6FA3C7" isAnimationActive={false} />
+              <Bar yAxisId="left" dataKey="Mean_Rainfall" name="Mean Actual (mm/day)" fill="#3E6A86" isAnimationActive={false} />
               <Line
                 yAxisId="left"
                 type="monotone"
                 dataKey="Mean_Normal"
                 name="Mean Normal (mm/day)"
-                stroke="#141E28"
+                stroke="#DCE8EF"
                 strokeWidth={1.8}
                 dot={false}
                 isAnimationActive={false}
@@ -199,7 +199,7 @@ export function DistrictExtremesChart({
                 type="monotone"
                 dataKey="Maximum_Rainfall"
                 name="Max District Day (mm)"
-                stroke="#C85A28"
+                stroke="#D9895A"
                 strokeWidth={1.5}
                 dot={false}
                 isAnimationActive={false}
@@ -211,27 +211,27 @@ export function DistrictExtremesChart({
               layout="vertical"
               margin={{ top: 8, right: 24, left: 24, bottom: 8 }}
             >
-              <CartesianGrid stroke="#E4DFD4" strokeDasharray="3 3" horizontal={false} />
+              <CartesianGrid stroke="#1C3245" strokeDasharray="3 3" horizontal={false} />
               <XAxis
                 type="number"
-                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
               />
               <YAxis
                 type="category"
                 dataKey="State"
                 width={150}
-                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#141E28' }}
+                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#DCE8EF' }}
               />
               <Tooltip
                 formatter={(val: number, name: string) => [val, name]}
                 contentStyle={{
-                  backgroundColor: '#FCFBF8',
-                  borderColor: '#141E28',
+                  backgroundColor: '#0C1E2E',
+                  borderColor: '#DCE8EF',
                   fontFamily: 'JetBrains Mono',
                   fontSize: '11px',
                 }}
               />
-              <Bar dataKey="Extreme_Observations" name="Events ≥ 100 mm" fill="#C85A28" barSize={15} isAnimationActive={false} />
+              <Bar dataKey="Extreme_Observations" name="Events ≥ 100 mm" fill="#D9895A" barSize={15} isAnimationActive={false} />
             </BarChart>
           )}
         </ResponsiveContainer>

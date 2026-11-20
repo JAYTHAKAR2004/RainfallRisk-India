@@ -69,25 +69,25 @@ export function SpellSensitivityChart({ cddYearly, cwdYearly }: SpellSensitivity
       <div className="h-[300px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={mergedData} margin={{ top: 10, right: 20, left: 6, bottom: 8 }}>
-            <CartesianGrid stroke="#E4DFD4" strokeDasharray="3 3" vertical={false} />
+            <CartesianGrid stroke="#1C3245" strokeDasharray="3 3" vertical={false} />
             <XAxis
               dataKey="Year"
-              tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+              tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
             />
             <YAxis
-              tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+              tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
               label={{
                 value: `Mean ${indexMode} (days/year)`,
                 angle: -90,
                 position: 'insideLeft',
-                style: { fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#667480' },
+                style: { fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#7F96A5' },
               }}
             />
             <Tooltip
               formatter={(val: number, name: string) => [`${fmtNum(val, 2)} days`, name]}
               contentStyle={{
-                backgroundColor: '#FCFBF8',
-                borderColor: '#141E28',
+                backgroundColor: '#0C1E2E',
+                borderColor: '#DCE8EF',
                 fontFamily: 'JetBrains Mono',
                 fontSize: '11px',
               }}
@@ -97,7 +97,7 @@ export function SpellSensitivityChart({ cddYearly, cwdYearly }: SpellSensitivity
               type="monotone"
               dataKey="scenarioA"
               name="Scenario A (All 4,885 cells)"
-              stroke="#C85A28"
+              stroke="#D9895A"
               strokeWidth={2}
               dot={{ r: 2.5 }}
               isAnimationActive={false}
@@ -106,7 +106,7 @@ export function SpellSensitivityChart({ cddYearly, cwdYearly }: SpellSensitivity
               type="monotone"
               dataKey="scenarioB"
               name="Scenario B (4,795 unflagged cells)"
-              stroke="#1D5B86"
+              stroke="#8FB6CD"
               strokeWidth={2}
               strokeDasharray="5 4"
               dot={{ r: 2.5 }}

@@ -79,17 +79,17 @@ export function StateComparisonChart({ states }: StateComparisonChartProps) {
         <ResponsiveContainer width="100%" height="100%">
           {metric === 'mean' ? (
             <BarChart data={sorted} layout="vertical" margin={{ top: 6, right: 24, left: 16, bottom: 6 }}>
-              <CartesianGrid stroke="#E4DFD4" strokeDasharray="3 3" horizontal={false} />
+              <CartesianGrid stroke="#1C3245" strokeDasharray="3 3" horizontal={false} />
               <XAxis
                 type="number"
-                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
                 unit=" mm"
               />
               <YAxis
                 type="category"
                 dataKey="State"
                 width={205}
-                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#141E28' }}
+                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#DCE8EF' }}
               />
               <Tooltip
                 content={({ active, payload }) => {
@@ -108,29 +108,29 @@ export function StateComparisonChart({ states }: StateComparisonChartProps) {
                   );
                 }}
               />
-              <Bar dataKey="Mean_Actual_Rainfall" name="Mean Actual (mm/day)" fill="#1D5B86" barSize={9} isAnimationActive={false} />
-              <Bar dataKey="Mean_Normal_Rainfall" name="Mean Normal (mm/day)" fill="#B8B2A4" barSize={7} isAnimationActive={false} />
+              <Bar dataKey="Mean_Actual_Rainfall" name="Mean Actual (mm/day)" fill="#8FB6CD" barSize={9} isAnimationActive={false} />
+              <Bar dataKey="Mean_Normal_Rainfall" name="Mean Normal (mm/day)" fill="#4E6475" barSize={7} isAnimationActive={false} />
             </BarChart>
           ) : metric === 'anomaly' ? (
             <BarChart data={sorted} layout="vertical" margin={{ top: 6, right: 24, left: 16, bottom: 6 }}>
-              <CartesianGrid stroke="#E4DFD4" strokeDasharray="3 3" horizontal={false} />
+              <CartesianGrid stroke="#1C3245" strokeDasharray="3 3" horizontal={false} />
               <XAxis
                 type="number"
-                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
                 unit=" mm"
               />
               <YAxis
                 type="category"
                 dataKey="State"
                 width={205}
-                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#141E28' }}
+                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#DCE8EF' }}
               />
-              <ReferenceLine x={0} stroke="#141E28" />
+              <ReferenceLine x={0} stroke="#DCE8EF" />
               <Tooltip
                 formatter={(val: number) => [fmtSigned(val, 2, 'mm/day'), 'Mean Daily Anomaly']}
                 contentStyle={{
-                  backgroundColor: '#FCFBF8',
-                  borderColor: '#141E28',
+                  backgroundColor: '#0C1E2E',
+                  borderColor: '#DCE8EF',
                   fontFamily: 'JetBrains Mono',
                   fontSize: '11px',
                 }}
@@ -139,35 +139,35 @@ export function StateComparisonChart({ states }: StateComparisonChartProps) {
                 {sorted.map((entry) => (
                   <Cell
                     key={entry.State}
-                    fill={entry.Mean_Anomaly_mm >= 0 ? '#1E7A6E' : '#C85A28'}
+                    fill={entry.Mean_Anomaly_mm >= 0 ? '#5C9B9B' : '#D9895A'}
                   />
                 ))}
               </Bar>
             </BarChart>
           ) : (
             <BarChart data={sorted} layout="vertical" margin={{ top: 6, right: 24, left: 16, bottom: 6 }}>
-              <CartesianGrid stroke="#E4DFD4" strokeDasharray="3 3" horizontal={false} />
+              <CartesianGrid stroke="#1C3245" strokeDasharray="3 3" horizontal={false} />
               <XAxis
                 type="number"
-                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
                 unit="%"
               />
               <YAxis
                 type="category"
                 dataKey="State"
                 width={205}
-                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#141E28' }}
+                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#DCE8EF' }}
               />
               <Tooltip
                 formatter={(val: number) => [`${fmtNum(val, 1)}%`, 'CV (%)']}
                 contentStyle={{
-                  backgroundColor: '#FCFBF8',
-                  borderColor: '#141E28',
+                  backgroundColor: '#0C1E2E',
+                  borderColor: '#DCE8EF',
                   fontFamily: 'JetBrains Mono',
                   fontSize: '11px',
                 }}
               />
-              <Bar dataKey="CV_Percent" fill="#B8862D" barSize={12} isAnimationActive={false} />
+              <Bar dataKey="CV_Percent" fill="#C9A35A" barSize={12} isAnimationActive={false} />
             </BarChart>
           )}
         </ResponsiveContainer>

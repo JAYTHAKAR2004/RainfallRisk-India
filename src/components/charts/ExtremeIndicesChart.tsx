@@ -43,31 +43,31 @@ export function ExtremeIndicesChart({
         <div className="h-[300px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={breakdownData} margin={{ top: 10, right: 16, left: 0, bottom: 8 }}>
-              <CartesianGrid stroke="#E4DFD4" strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid stroke="#1C3245" strokeDasharray="3 3" vertical={false} />
               <XAxis
                 dataKey="Index"
-                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#141E28' }}
+                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#DCE8EF' }}
               />
               <YAxis
-                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 11, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
                 label={{
                   value: 'Grid Cells (FDR α = 0.05)',
                   angle: -90,
                   position: 'insideLeft',
-                  style: { fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#667480' },
+                  style: { fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#7F96A5' },
                 }}
               />
               <Tooltip
                 formatter={(val: number, name: string) => [fmtInt(val) + ' cells', name]}
                 contentStyle={{
-                  backgroundColor: '#FCFBF8',
-                  borderColor: '#141E28',
+                  backgroundColor: '#0C1E2E',
+                  borderColor: '#DCE8EF',
                   fontFamily: 'JetBrains Mono',
                   fontSize: '11px',
                 }}
               />
-              <Bar dataKey="Increasing" name="Significant Increasing" fill="#1D5B86" isAnimationActive={false} />
-              <Bar dataKey="Decreasing" name="Significant Decreasing" fill="#C85A28" isAnimationActive={false} />
+              <Bar dataKey="Increasing" name="Significant Increasing" fill="#8FB6CD" isAnimationActive={false} />
+              <Bar dataKey="Decreasing" name="Significant Decreasing" fill="#D9895A" isAnimationActive={false} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -88,32 +88,32 @@ export function ExtremeIndicesChart({
         <div className="h-[300px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={prcptotSdiiAnnual} margin={{ top: 10, right: 16, left: 0, bottom: 8 }}>
-              <CartesianGrid stroke="#E4DFD4" strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid stroke="#1C3245" strokeDasharray="3 3" vertical={false} />
               <XAxis
                 dataKey="Year"
-                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#3E4C59' }}
+                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#A9BCC8' }}
               />
               <YAxis
                 yAxisId="left"
                 domain={[700, 1400]}
-                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#1D5B86' }}
+                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#8FB6CD' }}
                 label={{
                   value: 'PRCPTOT Mean (mm)',
                   angle: -90,
                   position: 'insideLeft',
-                  style: { fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#1D5B86' },
+                  style: { fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#8FB6CD' },
                 }}
               />
               <YAxis
                 yAxisId="right"
                 orientation="right"
                 domain={[11, 15]}
-                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#C85A28' }}
+                tick={{ fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#D9895A' }}
                 label={{
                   value: 'SDII Mean (mm/wet day)',
                   angle: 90,
                   position: 'insideRight',
-                  style: { fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#C85A28' },
+                  style: { fontSize: 10, fontFamily: 'JetBrains Mono', fill: '#D9895A' },
                 }}
               />
               <Tooltip
@@ -122,8 +122,8 @@ export function ExtremeIndicesChart({
                   name,
                 ]}
                 contentStyle={{
-                  backgroundColor: '#FCFBF8',
-                  borderColor: '#141E28',
+                  backgroundColor: '#0C1E2E',
+                  borderColor: '#DCE8EF',
                   fontFamily: 'JetBrains Mono',
                   fontSize: '11px',
                 }}
@@ -134,9 +134,9 @@ export function ExtremeIndicesChart({
                 type="monotone"
                 dataKey="SDII_Mean"
                 name="SDII Mean"
-                stroke="#C85A28"
+                stroke="#D9895A"
                 strokeWidth={2}
-                dot={{ r: 2.5, fill: '#C85A28' }}
+                dot={{ r: 2.5, fill: '#D9895A' }}
                 isAnimationActive={false}
               />
             </ComposedChart>

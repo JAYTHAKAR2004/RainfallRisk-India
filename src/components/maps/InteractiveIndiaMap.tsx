@@ -28,55 +28,55 @@ const WIDTH = 780;
 const HEIGHT = 840;
 
 function colorMeanRainfall(val: number | null | undefined): string {
-  if (val === null || val === undefined || Number.isNaN(val)) return '#E6E1D6';
-  if (val >= 10) return '#0F385A';
-  if (val >= 7) return '#1D5B86';
-  if (val >= 4.5) return '#3D82AF';
-  if (val >= 2.5) return '#78AFCF';
-  if (val >= 1) return '#B8D5E5';
-  return '#EAE5DA';
+  if (val === null || val === undefined || Number.isNaN(val)) return '#0F2232';
+  if (val >= 10) return '#DCE8EF';
+  if (val >= 7) return '#93BAD0';
+  if (val >= 4.5) return '#5A90B0';
+  if (val >= 2.5) return '#33698A';
+  if (val >= 1) return '#1F4560';
+  return '#14293A';
 }
 
 function colorAnomaly(val: number | null | undefined): string {
-  if (val === null || val === undefined || Number.isNaN(val)) return '#E6E1D6';
-  if (val >= 3) return '#0F5C52';
-  if (val >= 1) return '#2D8A7E';
-  if (val > 0) return '#8EC6BE';
-  if (val > -1.5) return '#E8B89E';
-  if (val > -3.5) return '#D47647';
-  return '#A33E14';
+  if (val === null || val === undefined || Number.isNaN(val)) return '#0F2232';
+  if (val >= 3) return '#A5D6D2';
+  if (val >= 1) return '#5C9B9B';
+  if (val > 0) return '#2C5555';
+  if (val > -1.5) return '#5A3F33';
+  if (val > -3.5) return '#B06A45';
+  return '#E8A27A';
 }
 
 function colorCv(val: number | null | undefined): string {
-  if (val === null || val === undefined || Number.isNaN(val)) return '#E6E1D6';
-  if (val >= 300) return '#9A4B16';
-  if (val >= 220) return '#C86D28';
-  if (val >= 160) return '#DF9E4E';
-  if (val >= 120) return '#ECD09A';
-  return '#F2EAD9';
+  if (val === null || val === undefined || Number.isNaN(val)) return '#0F2232';
+  if (val >= 300) return '#EBD39A';
+  if (val >= 220) return '#C9A35A';
+  if (val >= 160) return '#8A6E3C';
+  if (val >= 120) return '#4A4430';
+  return '#14293A';
 }
 
 function colorExtremes(val: number | null | undefined): string {
-  if (!val) return '#EFECE4';
-  if (val >= 20) return '#8F2D12';
-  if (val >= 10) return '#C85A28';
-  if (val >= 3) return '#E08F63';
-  return '#F0C5AB';
+  if (!val) return '#14293A';
+  if (val >= 20) return '#F2BC95';
+  if (val >= 10) return '#D9895A';
+  if (val >= 3) return '#9A5F40';
+  return '#4F3A30';
 }
 
 function colorMaxDaily(val: number | null | undefined): string {
-  if (val === null || val === undefined) return '#E6E1D6';
-  if (val >= 180) return '#8F2D12';
-  if (val >= 100) return '#C85A28';
-  if (val >= 60) return '#E09255';
-  if (val >= 30) return '#78AFCF';
-  return '#CFE2ED';
+  if (val === null || val === undefined) return '#0F2232';
+  if (val >= 180) return '#F2BC95';
+  if (val >= 100) return '#D9895A';
+  if (val >= 60) return '#B87A4E';
+  if (val >= 30) return '#33698A';
+  return '#1F4560';
 }
 
 function colorWilcoxon(props: Record<string, any>): string {
-  if (!props.District_Count) return '#E6E1D6';
-  if (!props.Significant) return '#C4BEB0';
-  return props.Rainfall_Status === 'Above Normal' ? '#1E7A6E' : '#C85A28';
+  if (!props.District_Count) return '#0F2232';
+  if (!props.Significant) return '#3A4D5B';
+  return props.Rainfall_Status === 'Above Normal' ? '#5C9B9B' : '#D9895A';
 }
 
 export function InteractiveIndiaMap({
@@ -178,7 +178,7 @@ export function InteractiveIndiaMap({
   };
 
   const getDistrictColor = (props: Record<string, any>) => {
-    if (props.status === 'unreported') return '#EBE7DD';
+    if (props.status === 'unreported') return '#0D1F2E';
     if (districtMetric === 'meanActual') return colorMeanRainfall(props.Mean_Actual_Rainfall);
     if (districtMetric === 'anomaly') return colorAnomaly(props.Mean_Anomaly_mm);
     if (districtMetric === 'maxDaily') return colorMaxDaily(props.Max_Daily_Rainfall);
@@ -211,9 +211,9 @@ export function InteractiveIndiaMap({
           title: `${footprintIndex} Cell-Wise Trend (BH FDR α = 0.05)`,
           unit: '4,885 cells',
           stops: [
-            { color: '#1D5B86', label: 'Significant Increasing' },
-            { color: '#C4BEB0', label: 'Not Statistically Significant' },
-            { color: '#C85A28', label: 'Significant Decreasing' },
+            { color: '#93BAD0', label: 'Significant Increasing' },
+            { color: '#3A4D5B', label: 'Not Statistically Significant' },
+            { color: '#D9895A', label: 'Significant Decreasing' },
           ],
           note: 'Historical common footprint covers 28.05% of the 17,415-cell bounding grid (2000–2025).',
         };
@@ -222,11 +222,11 @@ export function InteractiveIndiaMap({
         title: `${footprintIndex} Sen's Slope Direction`,
         unit: 'per year',
         stops: [
-          { color: '#113A58', label: 'Strong Positive Slope' },
-          { color: '#5A96BA', label: 'Moderate Positive' },
-          { color: '#DCD7CB', label: 'Near Zero / Neutral' },
-          { color: '#E09255', label: 'Moderate Negative' },
-          { color: '#A33E14', label: 'Strong Negative Slope' },
+          { color: '#DCE8EF', label: 'Strong Positive Slope' },
+          { color: '#729CB5', label: 'Moderate Positive' },
+          { color: '#2C3F4E', label: 'Near Zero / Neutral' },
+          { color: '#B87A4E', label: 'Moderate Negative' },
+          { color: '#E8A27A', label: 'Strong Negative Slope' },
         ],
       };
     }
@@ -237,12 +237,12 @@ export function InteractiveIndiaMap({
         title: 'Mean Daily Actual Rainfall',
         unit: 'mm/day (Aug–Nov 2026)',
         stops: [
-          { color: '#EAE5DA', label: '< 1.0' },
-          { color: '#B8D5E5', label: '1.0 – 2.5' },
-          { color: '#78AFCF', label: '2.5 – 4.5' },
-          { color: '#3D82AF', label: '4.5 – 7.0' },
-          { color: '#1D5B86', label: '7.0 – 10.0' },
-          { color: '#0F385A', label: '≥ 10.0' },
+          { color: '#14293A', label: '< 1.0' },
+          { color: '#1F4560', label: '1.0 – 2.5' },
+          { color: '#33698A', label: '2.5 – 4.5' },
+          { color: '#5A90B0', label: '4.5 – 7.0' },
+          { color: '#93BAD0', label: '7.0 – 10.0' },
+          { color: '#DCE8EF', label: '≥ 10.0' },
         ],
       };
     }
@@ -251,12 +251,12 @@ export function InteractiveIndiaMap({
         title: 'Mean Daily Anomaly (Actual − Normal)',
         unit: 'mm/day',
         stops: [
-          { color: '#A33E14', label: '≤ -3.5' },
-          { color: '#D47647', label: '-3.5 to -1.5' },
-          { color: '#E8B89E', label: '-1.5 to 0' },
-          { color: '#8EC6BE', label: '0 to +1.0' },
-          { color: '#2D8A7E', label: '+1.0 to +3.0' },
-          { color: '#0F5C52', label: '≥ +3.0' },
+          { color: '#E8A27A', label: '≤ -3.5' },
+          { color: '#B06A45', label: '-3.5 to -1.5' },
+          { color: '#5A3F33', label: '-1.5 to 0' },
+          { color: '#2C5555', label: '0 to +1.0' },
+          { color: '#5C9B9B', label: '+1.0 to +3.0' },
+          { color: '#A5D6D2', label: '≥ +3.0' },
         ],
       };
     }
@@ -265,11 +265,11 @@ export function InteractiveIndiaMap({
         title: 'Coefficient of Variation (CV)',
         unit: '%',
         stops: [
-          { color: '#F2EAD9', label: '< 120%' },
-          { color: '#ECD09A', label: '120 – 160%' },
-          { color: '#DF9E4E', label: '160 – 220%' },
-          { color: '#C86D28', label: '220 – 300%' },
-          { color: '#9A4B16', label: '≥ 300%' },
+          { color: '#14293A', label: '< 120%' },
+          { color: '#4A4430', label: '120 – 160%' },
+          { color: '#8A6E3C', label: '160 – 220%' },
+          { color: '#C9A35A', label: '220 – 300%' },
+          { color: '#EBD39A', label: '≥ 300%' },
         ],
       };
     }
@@ -278,11 +278,11 @@ export function InteractiveIndiaMap({
         title: 'District-Day Extreme Events (≥ 100 mm)',
         unit: 'count',
         stops: [
-          { color: '#EFECE4', label: '0' },
-          { color: '#F0C5AB', label: '1 – 2' },
-          { color: '#E08F63', label: '3 – 9' },
-          { color: '#C85A28', label: '10 – 19' },
-          { color: '#8F2D12', label: '≥ 20' },
+          { color: '#14293A', label: '0' },
+          { color: '#4F3A30', label: '1 – 2' },
+          { color: '#9A5F40', label: '3 – 9' },
+          { color: '#D9895A', label: '10 – 19' },
+          { color: '#F2BC95', label: '≥ 20' },
         ],
       };
     }
@@ -291,11 +291,11 @@ export function InteractiveIndiaMap({
         title: 'Maximum Single-Day Rainfall',
         unit: 'mm',
         stops: [
-          { color: '#CFE2ED', label: '< 30' },
-          { color: '#78AFCF', label: '30 – 60' },
-          { color: '#E09255', label: '60 – 100' },
-          { color: '#C85A28', label: '100 – 180' },
-          { color: '#8F2D12', label: '≥ 180' },
+          { color: '#1F4560', label: '< 30' },
+          { color: '#33698A', label: '30 – 60' },
+          { color: '#B87A4E', label: '60 – 100' },
+          { color: '#D9895A', label: '100 – 180' },
+          { color: '#F2BC95', label: '≥ 180' },
         ],
       };
     }
@@ -304,10 +304,10 @@ export function InteractiveIndiaMap({
         title: 'Paired Actual vs Normal (Wilcoxon Holm)',
         unit: '28 states (n≥8)',
         stops: [
-          { color: '#1E7A6E', label: 'Significant Above Normal' },
-          { color: '#C85A28', label: 'Significant Below Normal' },
-          { color: '#C4BEB0', label: 'Not Significant (Holm)' },
-          { color: '#E6E1D6', label: 'Excluded (< 8 districts)' },
+          { color: '#5C9B9B', label: 'Significant Above Normal' },
+          { color: '#D9895A', label: 'Significant Below Normal' },
+          { color: '#3A4D5B', label: 'Not Significant (Holm)' },
+          { color: '#0F2232', label: 'Excluded (< 8 districts)' },
         ],
       };
     }
@@ -315,12 +315,12 @@ export function InteractiveIndiaMap({
       title: 'Rainy Days (≥ 2.5 mm/day)',
       unit: 'out of 85 days',
       stops: [
-        { color: '#EAE5DA', label: '< 6 d' },
-        { color: '#B8D5E5', label: '6 – 15 d' },
-        { color: '#78AFCF', label: '15 – 27 d' },
-        { color: '#3D82AF', label: '27 – 42 d' },
-        { color: '#1D5B86', label: '42 – 60 d' },
-        { color: '#0F385A', label: '≥ 60 d' },
+        { color: '#14293A', label: '< 6 d' },
+        { color: '#1F4560', label: '6 – 15 d' },
+        { color: '#33698A', label: '15 – 27 d' },
+        { color: '#5A90B0', label: '27 – 42 d' },
+        { color: '#93BAD0', label: '42 – 60 d' },
+        { color: '#DCE8EF', label: '≥ 60 d' },
       ],
     };
   }, [layer, stateMetric, districtMetric, footprintIndex, footprintView]);
@@ -547,7 +547,7 @@ export function InteractiveIndiaMap({
                       key={sp.id}
                       d={sp.d}
                       fill={getStateColor(sp.props)}
-                      stroke={isSelected ? '#141E28' : '#FAF8F3'}
+                      stroke={isSelected ? '#D9E8F3' : '#071522'}
                       strokeWidth={isSelected ? 1.8 / zoom : 0.7 / zoom}
                       className="cursor-pointer transition-opacity hover:opacity-85"
                       onClick={(e) => {
@@ -583,7 +583,7 @@ export function InteractiveIndiaMap({
                         d={dp.d}
                         fill={getDistrictColor(dp.props)}
                         fillOpacity={dimmed ? 0.14 : 1}
-                        stroke={isSelected ? '#141E28' : '#787266'}
+                        stroke={isSelected ? '#D9E8F3' : '#3A5163'}
                         strokeWidth={isSelected ? 1.5 / zoom : 0.3 / zoom}
                         className="cursor-pointer"
                         onClick={(e) => {
@@ -610,7 +610,7 @@ export function InteractiveIndiaMap({
                       key={`outline-${sp.id}`}
                       d={sp.d}
                       fill="none"
-                      stroke="#141E28"
+                      stroke="#D9E8F3"
                       strokeOpacity={0.35}
                       strokeWidth={0.75 / zoom}
                       className="pointer-events-none"
@@ -625,23 +625,23 @@ export function InteractiveIndiaMap({
                     <path
                       key={`base-${sp.id}`}
                       d={sp.d}
-                      fill="#EAE5DA"
-                      stroke="#9D9688"
+                      fill="#14293A"
+                      stroke="#3A5163"
                       strokeWidth={0.7 / zoom}
                     />
                   ))}
                   {footprintDots.map((pt, i) => {
-                    let fill = '#C4BEB0';
+                    let fill = '#3A4D5B';
                     if (footprintView === 'sig') {
-                      if (pt.sig === 1) fill = '#1D5B86';
-                      else if (pt.sig === -1) fill = '#C85A28';
+                      if (pt.sig === 1) fill = '#93BAD0';
+                      else if (pt.sig === -1) fill = '#D9895A';
                     } else {
                       const s = pt.slope ?? 0;
-                      if (s > 0.25) fill = '#113A58';
-                      else if (s > 0.02) fill = '#5A96BA';
-                      else if (s < -0.25) fill = '#A33E14';
-                      else if (s < -0.02) fill = '#E09255';
-                      else fill = '#DCD7CB';
+                      if (s > 0.25) fill = '#DCE8EF';
+                      else if (s > 0.02) fill = '#729CB5';
+                      else if (s < -0.25) fill = '#E8A27A';
+                      else if (s < -0.02) fill = '#B87A4E';
+                      else fill = '#2C3F4E';
                     }
                     return (
                       <rect
