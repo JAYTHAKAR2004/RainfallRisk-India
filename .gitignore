@@ -2,6 +2,8 @@
 .conda_envs/
 .conda_pkgs/
 .conda_temp/
+.cache/
+bin/
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
